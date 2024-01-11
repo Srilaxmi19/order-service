@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import com.olive.os.api.entity.Order;
 import com.olive.os.api.repository.OrderRepository;
 
+import java.util.List;
+
 @Service
 public class OrderService {
 
@@ -15,5 +17,10 @@ public class OrderService {
 	public Order saveOrder(Order order) {
 		return orderRepository.save(order);
 		
+	}
+
+	public List<Order> getAll()
+	{
+		return orderRepository.findAll();
 	}
 }
