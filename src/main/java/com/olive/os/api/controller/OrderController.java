@@ -1,13 +1,12 @@
 package com.olive.os.api.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.olive.os.api.entity.Order;
 import com.olive.os.api.service.OrderService;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/order")
@@ -17,9 +16,15 @@ public class OrderController {
 	private OrderService orderService;
 	
 	
-	@PostMapping("/bookOrder")
+	@PostMapping("/add")
     public Order bookOrder(@RequestBody Order order) {
         return orderService.saveOrder(order);
 
-}
+	}
+
+	@GetMapping("all")
+	public List<Order> getAll(){
+		return orderService.getAll();
+	}
+
 }
